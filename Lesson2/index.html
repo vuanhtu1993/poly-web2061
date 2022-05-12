@@ -21,7 +21,7 @@
     Syntax 
 
     <!-- String -->
-    
+
     <!-- Number -->
 </body>
 <script>
@@ -63,6 +63,29 @@ function prev() {
     index--
 }
 
+// String
+function search(str, keyword) {
+    str = str.toLowerCase()
+    keyword = keyword.toLowerCase()
+    return str.includes(keyword)
+}
+
+// Demo: 
+// Cho 1 chuỗi ban đầu
+// Cho 1 từ khoá search
+// in ra màn hình chuỗi tìm kiếm trong chuỗi gốc
+// str = "FPT PolYtechnic"
+// keywork = "poly"
+// function => PolY
+function superSearch(str, keyword) {
+    const newStr = str.toLowerCase()
+    keyword = keyword.toLowerCase()
+    const start = newStr.indexOf(keyword)
+    const end = keyword.length + start
+    console.log("=======")
+    console.log(start, end)
+    return str.slice(start, end)
+}
 
 </script>
 </html>
