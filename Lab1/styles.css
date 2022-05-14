@@ -31,6 +31,11 @@
     border-radius: 4px;
 }
 
+.btn-filtered {
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+}
+
 .menus {
     margin-top: 32px;
     display: flex;

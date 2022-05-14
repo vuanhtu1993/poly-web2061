@@ -119,6 +119,7 @@ const filterBtns = document.querySelectorAll(".btn");
 
 filterBtns.forEach(function (item) {
   item.addEventListener("click", function (e) {
+    addFilterClass(e.target)
     const category = e.currentTarget.dataset.id;
     if (category === "all") {
       render(menu);
@@ -130,3 +131,14 @@ filterBtns.forEach(function (item) {
     }
   });
 });
+
+function addFilterClass(element) {
+  clearFilterClass()
+  element.classList.add('btn-filtered')
+}
+
+function clearFilterClass() {
+  filterBtns.forEach(function(item) {
+    item.classList.remove('btn-filtered')
+  })
+}
