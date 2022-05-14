@@ -84,7 +84,7 @@ const menu = [
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     render(menu);
-  }, 1000);
+  }, 2000);
 });
 
 // Selector
@@ -118,18 +118,17 @@ function render(menu) {
 const filterBtns = document.querySelectorAll(".btn");
 
 filterBtns.forEach(function (item) {
-  item.addEventListener("click", function (e) {
-    addFilterClass(e.target)
-    const category = e.currentTarget.dataset.id;
-    if (category === "all") {
-      render(menu);
+  item.addEventListener('click', function(event) {
+    const category = event.currentTarget.getAttribute('data-id')
+    if(category === "all") {
+      render(menu)
     } else {
-      const menuCategory = menu.filter(function (item) {
-        return item.category === category;
-      });
-      render(menuCategory);
+      const catgoryMenu = menu.filter(function(item) {
+        return item.category === category
+      })
+      render(catgoryMenu)
     }
-  });
+  })
 });
 
 function addFilterClass(element) {
