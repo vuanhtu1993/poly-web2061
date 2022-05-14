@@ -82,62 +82,25 @@ const menu = [
 ];
 // DOMContentLoaded -> When document ready
 document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function () {
-    render(menu);
-  }, 2000);
 });
 
 // Selector
 const menuElement = document.querySelector(".menus");
 
 // Render list menu
-function render(menu) {
-  let _content = "";
-  menu.forEach(function (item) {
-    _content =
-      _content +
-      `
-        <div class="menu-item">
-            <img src="${item.img}" alt="">
-            <div class="menu-item-content">
-                <div class="title">
-                    <h3>${item.title}</h3>
-                    <div class="price">$${item.price}</div>
-                </div>
-                <div class="description">
-                    ${item.desc}
-                </div>
-            </div>
-        </div>
-        `;
-  });
-  menuElement.innerHTML = _content;
+function render() {
 }
 
 // Filter list menu
 const filterBtns = document.querySelectorAll(".btn");
 
-filterBtns.forEach(function (item) {
-  item.addEventListener('click', function(event) {
-    const category = event.currentTarget.getAttribute('data-id')
-    if(category === "all") {
-      render(menu)
-    } else {
-      const catgoryMenu = menu.filter(function(item) {
-        return item.category === category
-      })
-      render(catgoryMenu)
-    }
-  })
+filterBtns.forEach(function () {
+
 });
 
-function addFilterClass(element) {
-  clearFilterClass()
-  element.classList.add('btn-filtered')
+// Thay đổi màu nút filter
+function addFilterClass() {
 }
 
 function clearFilterClass() {
-  filterBtns.forEach(function(item) {
-    item.classList.remove('btn-filtered')
-  })
 }
