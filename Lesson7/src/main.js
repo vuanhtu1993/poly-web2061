@@ -1,13 +1,27 @@
-import '../style.css'
+import Navigo from 'navigo'
+// Component
+import Footer from './components/footer'
 import Header from './components/header'
+import Home from './pages/home';
+// styles
+import '../style.css'
 
-function render() {
+// Config router
+const router = new Navigo('/', {linksSelector: "a"});
+
+router.on({
+  "/": function() {
+    print(Home.render())
+  },
+  "/san-pham": function() {
+    console.log('Sản phẩm')
+  },
+})
+router.resolve()
+// End config router
+
+function print(content) {
   document.querySelector('#header').innerHTML = Header.render()
-  document.querySelector('#app').innerHTML = /*html*/`
-    <h1 class="bg-blue-300">Hello Vite!</h1>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
-  document.querySelector('#footer').innerHTML = "FOOTER"
+  document.querySelector('#app').innerHTML = content
+  document.querySelector('#footer').innerHTML = Footer.render();
 }
-
-render()
