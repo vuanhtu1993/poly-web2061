@@ -16,14 +16,17 @@ document.querySelector('#app').innerHTML = /*html*/`
 `
 
 const print = (content) => {
-  document.querySelector('#app').innerHTML = content.render();
+  document.querySelector('#app').innerHTML = content;
 }
 
 const router = new Navigo("/", {linksSelector: "a"})
 // Router declaration
 router.on({
-  "/": () => print(HomePage),
-  "about": () => print(AboutPage)
+  "/": () => print(HomePage.render()),
+  "about": () => print(AboutPage.render()),
+  "product/:id": ({data}) => {
+    console.log(data.id)
+  } 
 })
 // Router activate
 router.resolve();
