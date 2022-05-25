@@ -3,6 +3,7 @@ import Navigo from 'navigo'
 import Footer from './components/footer'
 import Header from './components/header'
 import Home from './pages/home';
+import {apiGet, apiGetCallback} from './api'
 // styles
 import '../style.css'
 
@@ -25,3 +26,5 @@ function print(content) {
   document.querySelector('#app').innerHTML = content
   document.querySelector('#footer').innerHTML = Footer.render();
 }
+
+apiGet('/books').then(data => console.log(data))

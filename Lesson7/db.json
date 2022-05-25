@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$v8U/FwZCgW6yBLeLURNn.uQA7CGgWUVuRP4LcnfvMXkW5VuGewuy6",
+      "id": 1
+    }
+  ],
+  "books": [
+    {
+      "title": "Tâm Lý Học Hành Vi (Tặng Kèm 1 Bookmark )",
+      "price": 98000,
+      "sale_off": 64500,
+      "description": "Không chỉ là một bộ môn khoa học trong phòng thực nghiệm, mà quan trọng hơn, những lý luận của tâm lý học hành vi giúp con người tự nhìn nhận bản thân, tự điều chỉnh tâm lý, đồng thời thông qua hành vi để nắm bắt và thấu hiểu tâm lý, đồng thời thông qua hành vi để nắm bắt và thấu hiểu tâm lý của những người xung quanh.",
+      "short_description": "Tác giả: Khương Nguy Đứng thứ 11 trong Top 1000 Sách tư duy - Kỹ năng sống bán chạy tháng này",
+      "image": "https://picsum.photos/200/300",
+      "categories": [
+        "Sách tiếng việt",
+        "Tâm lý học"
+      ],
+      "publisher": "Nhà Xuất Bản Hà Nội",
+      "id": 1
+    },
+    {
+      "title": "Sách - EQ - Nghệ Thuật Làm Chủ Cảm Xúc Trong Công Việc",
+      "price": 129000,
+      "sale_off": 108360,
+      "description": "Cuốn sách này gồm ba phần, mỗi phần tập trung vào một trong ba lĩnh vực chính: khả năng ra quyết định, sự nhanh nhạy và các mối quan hệ. Phần đầu tiên sẽ trình bày một cách dễ hiểu và hữu dụng về lý thuyết khoa học não bộ đằng sau EQ, phần hai sẽ điểm qua một chút về môi trường và phần ba sẽ liên quan đến động lực cũng như cách làm mới phương pháp tiếp cận của bạn. Trong mỗi chương, chúng ta cũng sẽ bàn về nguyên lý tôi, chúng ta và tại sao. Trong mỗi chương, bạn sẽ học được cách đi từ tôi đến chúng ta và cuối cùng là tại sao.",
+      "short_description": "Tác giả: Kerry Gleeson",
+      "image": "https://picsum.photos/200/300",
+      "categories": [
+        "Sách tiếng việt"
+      ],
+      "publisher": "Nhà Xuất Bản Dân Trí",
+      "id": 2
+    },
+    {
+      "title": "Cabins",
+      "price": 560000,
+      "sale_off": 560000,
+      "description": "Trong thập kỷ qua, khi sự tồn tại vật chất và dấu ấn môi trường của chúng ta đã phát triển theo cấp số nhân, các kiến trúc sư trên toàn cầu đã đặc biệt quan tâm đến các khả năng của nơi ở tối thiểu, ít tác động và biệt lập. và các minh họa đương đại, tươi sáng của Marie-Laure Cruschi, khám phá cách loại kiến trúc đặc biệt này tạo ra những cơ hội đặc biệt cho tư duy sáng tạo. Để tránh sự dư thừa, cabin hạn chế sự xâm nhập không gian thực tế đối với các nhu cầu thiết yếu của cuộc sống, trong khi đáp ứng với khung cảnh mộc mạc điển hình của nó, nó đưa ra các giải pháp thân thiện với môi trường.",
+      "short_description": "Tác giả: Philip Jodidio Đứng thứ 1 trong Top 1000 Architecture bán chạy tháng này",
+      "image": "https://picsum.photos/200/300",
+      "categories": [
+        "Sách anh ngữ",
+        "eq"
+      ],
+      "publisher": "Taschen",
+      "id": 3
+    },
+    {
+      "title": "Máy Tính CASIO FX580VN X",
+      "price": 659000,
+      "sale_off": 659000,
+      "description": "Máy Tính Casio FX580VN X-BU (Màu Xanh) thuộc dòng máy tính khoa học ClassWiz, được hãng máy tính Casio Nhật Bản sản xuất dành riêng cho nền giáo dục Việt. Sản phẩm tích hợp tới 521 tính năng, trong đó có rất nhiều tính năng mà các dòng máy tính khoa học trên thị trường hiện nay không có được.",
+      "short_description": "Thương hiệu: Casio Đứng thứ 2 trong Top 1000 Máy Tính Khoa Học bán chạy tháng này",
+      "image": "https://picsum.photos/200/300",
+      "categories": [
+        "Văn Phòng Phẩm",
+        "Máy tính bỏ túi"
+      ],
+      "manufacturer": "Casio",
+      "id": 4
+    }
+  ]
+}
