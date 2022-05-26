@@ -12,9 +12,14 @@ function getImage(url, callback) {
     return fetch(url).then(data => callback(data))
 }
 
+function getImagePromise(url) {
+    return fetch(url)
+}
+
 
 export {
     apiGet,
     apiGetCallback,
-    getImage
+    getImage,
+    getImagePromise
 }
