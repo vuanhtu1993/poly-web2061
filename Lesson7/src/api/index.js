@@ -8,8 +8,13 @@ function apiGetCallback(uri, callback) {
     return fetch(server + uri).then(res => res.json()).then(data => callback(data))
 }
 
+function getImage(url, callback) {
+    return fetch(url).then(data => callback(data))
+}
+
 
 export {
     apiGet,
-    apiGetCallback
+    apiGetCallback,
+    getImage
 }
