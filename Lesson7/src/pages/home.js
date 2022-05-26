@@ -1,5 +1,9 @@
+import { apiGet } from "../api"
+
 const Home = {
-    render: function() {
+    render: async function() {
+        const data = await apiGet('/books')
+        // console.log(data)
         return /*html*/`
         <div class="text-center">
             <h1 class="bg-blue-300">Hello Vite!</h1>
