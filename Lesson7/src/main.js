@@ -3,6 +3,7 @@ import Navigo from "navigo";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Home from "./pages/home";
+import BookDetail from "./pages/book/detail";
 import { apiGet, apiGetCallback, getImage, getImagePromise } from "./api";
 // styles
 import "../style.css";
@@ -17,13 +18,16 @@ router.on({
   "/san-pham": function () {
     console.log("Sản phẩm");
   },
+  "/books/:id": function ({data}) {
+    print(BookDetail, data)
+  },
 });
 router.resolve();
 // End config router
 
-function print(content) {
+async function print(content, param) {
   document.querySelector("#header").innerHTML = Header.render();
-  document.querySelector("#app").innerHTML = content.render();
+  document.querySelector("#app").innerHTML = await content.render(param);
   document.querySelector("#footer").innerHTML = Footer.render();
 }
 
