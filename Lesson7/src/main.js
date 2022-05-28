@@ -21,9 +21,9 @@ router.on({
 router.resolve();
 // End config router
 
-async function print(content) {
+function print(content) {
   document.querySelector("#header").innerHTML = Header.render();
-  document.querySelector("#app").innerHTML = await content.render();
+  document.querySelector("#app").innerHTML = content.render();
   document.querySelector("#footer").innerHTML = Footer.render();
 }
 
