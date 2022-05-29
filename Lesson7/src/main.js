@@ -18,8 +18,8 @@ router.on({
   "/san-pham": function () {
     console.log("Sản phẩm");
   },
-  "/books/:id": function ({data}) {
-    print(BookDetail, data)
+  "/books/:id": function (pram) {
+    print(BookDetail, pram)
   },
 });
 router.resolve();
