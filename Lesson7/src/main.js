@@ -8,9 +8,13 @@ import { apiGet, apiGetCallback, getImage, getImagePromise, priceline, cost } fr
 // styles
 import "../style.css";
 
+
 // Config router
 const router = new Navigo("/", { linksSelector: "a" });
-
+async function log() {
+    await console.log(document.getElementById("1"))
+}
+log();
 router.on({
     "/": function() {
         print(Home);

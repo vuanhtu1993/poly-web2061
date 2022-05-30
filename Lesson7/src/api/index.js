@@ -28,6 +28,7 @@ function cost(x) {
         return "-" + x + "%";
     } else { return "" }
 }
+
 export {
     apiGet,
     apiGetCallback,
