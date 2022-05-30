@@ -4,27 +4,28 @@ const Home = {
         render: async function() {
                 let data = await apiGet('/books')
                 console.log(data)
+
                 return /*html*/ `
         <div class="flex">
             <div class="basis-2/12">
-            <div class="grid grap-1 grid-cols-1"> 
+            <div class="grid grap-1 grid-cols-1 px-3 py-3"> 
             <h4>DANH MỤC SẢN PHẨM</h4>
             <a href="">Danh mục 1</a>
             <a href="">Danh mục 1</a>
             <a href="">Danh mục 1</a> 
             </div>
-               
+            
             </div>
             <div class="basis-10/12">
-                <div class="btn flex basis-full">
-                <button id="1" class="btn px-3 py-3 hover:rounded-lg" data-id="All">All</button>
+             <div class="btn flex basis-full">
+                <button class="btn px-3 py-3 hover:rounded-lg" data-id="All">All</button>
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Tâm lý học">Tâm lý học</button>
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Sách tiếng việt">Sách tiếng việt</button> 
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Sách anh ngữ">Sách anh ngữ</button>
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Sách EQ">Sách EQ</button>
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Văn Phòng Phẩm">Văn Phòng Phẩm</button>
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Máy tính bỏ túi">Máy tính bỏ túi</button>
-            </div>
+             </div>
                 <div class="grid grid-cols-4 gap-4">
                     ${data.map(item => /*html*/`                 
                     <div class="px-7 py-3 border-2 hover:shadow-md"> 
@@ -37,14 +38,23 @@ const Home = {
                                     <span>
                                     ${cost((100-((item.sale_off/item.price)*100)).toFixed())}
                                     </span></p>
-
                         </a>
                      </div>
-                    `).join('')}                                  
+             `
+                    ).join('')}                                  
                 </div>
             </div>
         </div>  
         `
+    },
+    
+    renderId : async function() {
+
+        console.log( document.querySelector(".btn"))
+
+        // let data = await apiGet('/books');
+        // console.log(data)
+    
     }
     
 }
