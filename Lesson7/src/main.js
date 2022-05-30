@@ -4,7 +4,7 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import Home from "./pages/home";
 import BookDetail from "./pages/book/detail";
-import { apiGet, apiGetCallback, getImage, getImagePromise } from "./api";
+import { apiGet, apiGetCallback, getImage, getImagePromise, priceline, cost } from "./api";
 // styles
 import "../style.css";
 
@@ -12,23 +12,23 @@ import "../style.css";
 const router = new Navigo("/", { linksSelector: "a" });
 
 router.on({
-  "/": function () {
-    print(Home);
-  },
-  "/san-pham": function () {
-    console.log("Sản phẩm");
-  },
-  "/books/:id": function (pram) {
-    print(BookDetail, pram)
-  },
+    "/": function() {
+        print(Home);
+    },
+    "/san-pham": function() {
+        console.log("Sản phẩm");
+    },
+    "/books/:id": function(pram) {
+        print(BookDetail, pram)
+    },
 });
 router.resolve();
 // End config router
 
 async function print(content, param) {
-  document.querySelector("#header").innerHTML = Header.render();
-  document.querySelector("#app").innerHTML = await content.render(param);
-  document.querySelector("#footer").innerHTML = Footer.render();
+    document.querySelector("#header").innerHTML = Header.render();
+    document.querySelector("#app").innerHTML = await content.render(param);
+    document.querySelector("#footer").innerHTML = Footer.render();
 }
 
 // Asynchronous
@@ -68,4 +68,3 @@ async function print(content, param) {
 // document.querySelector("#img-02").src = data2.url
 // const data3 = await getImagePromise('https://picsum.photos/3000/2000')
 // document.querySelector("#img-03").src = data3.url
-

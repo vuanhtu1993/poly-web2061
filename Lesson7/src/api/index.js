@@ -1,5 +1,5 @@
 const server = 'http://localhost:3000'
-// Lấy dữ liệu về
+    // Lấy dữ liệu về
 function apiGet(uri) {
     return fetch(server + uri).then(res => res.json())
 }
@@ -16,10 +16,23 @@ function getImagePromise(url) {
     return fetch(url)
 }
 
+function priceline(price1, price2) {
+    if (price1 === price2) {
+        return ""
+    }
+    return price2 + "đ"
+}
 
+function cost(x) {
+    if (x > 0) {
+        return "-" + x + "%";
+    } else { return "" }
+}
 export {
     apiGet,
     apiGetCallback,
     getImage,
-    getImagePromise
+    getImagePromise,
+    priceline,
+    cost,
 }
