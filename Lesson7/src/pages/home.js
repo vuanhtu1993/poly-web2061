@@ -10,13 +10,20 @@ const Home = {
             <div class="basis-2/12">
             <div class="grid grap-1 grid-cols-1 px-3 py-3"> 
             <h4>DANH MỤC SẢN PHẨM</h4>
-            <a href="">Danh mục 1</a>
-            <a href="">Danh mục 1</a>
-            <a href="">Danh mục 1</a> 
+            <a class="py-2" href="">English Books</a>
+            <a class="py-2" href="">Sách tiếng Việt</a>
+            <a class="py-2" href="">Văn phòng phẩm</a> 
+            <a class="py-2" href="">Quà lưu niệm</a> 
+            
+
             </div>
             
             </div>
-            <div class="basis-10/12">
+            <div class="basis-10/12">    
+            <div class="pt-5"> 
+            <h2 class="text-xl pb-3">Nhà sách tiki</h2>
+            <img src="https://salt.tikicdn.com/cache/w1080/ts/banner/60/0c/44/11771d2ece938d92769724ffd3866c17.png.webp" alt="banner" />
+            </div>       
              <div class="btn flex basis-full">
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="All">All</button>
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Tâm lý học">Tâm lý học</button>
