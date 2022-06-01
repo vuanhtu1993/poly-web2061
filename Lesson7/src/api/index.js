@@ -3,6 +3,16 @@ const server = 'http://localhost:3000'
 function apiGet(uri) {
     return fetch(server + uri).then(res => res.json())
 }
+
+function apiPost(uri, data) {
+    return fetch(server + uri, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }).then(res => res.json())
+}
 // Lấy dữ liệu về callback
 function apiGetCallback(uri, callback) {
     return fetch(server + uri).then(res => res.json()).then(data => callback(data))
@@ -16,10 +26,16 @@ function getImagePromise(url) {
     return fetch(url)
 }
 
+function apiCrawl(url) {
+    return fetch(url).then(res => res.json())
+}
+
 
 export {
     apiGet,
+    apiPost,
     apiGetCallback,
     getImage,
-    getImagePromise
+    getImagePromise,
+    apiCrawl
 }

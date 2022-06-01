@@ -7,6 +7,7 @@ import BookDetail from "./pages/book/detail";
 import { apiGet, apiGetCallback, getImage, getImagePromise } from "./api";
 // styles
 import "../style.css";
+import Crawl from "./pages/crawl";
 
 // Config router
 const router = new Navigo("/", { linksSelector: "a" });
@@ -18,8 +19,11 @@ router.on({
   "/san-pham": function () {
     console.log("Sản phẩm");
   },
-  "/books/:id": function (pram) {
-    print(BookDetail, pram)
+  "/books/:id": function (param) {
+    print(BookDetail, param)
+  },
+  "/crawl/:id": function (param) {
+    print(Crawl, param)
   },
 });
 router.resolve();
