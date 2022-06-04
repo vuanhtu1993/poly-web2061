@@ -1,4 +1,4 @@
-const server = 'http://localhost:3000'
+const server = 'http://localhost:4000'
 // Lấy dữ liệu về
 function apiGet(uri) {
     return fetch(server + uri).then(res => res.json())

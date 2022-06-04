@@ -8,9 +8,11 @@ import { apiGet, apiGetCallback, getImage, getImagePromise } from "./api";
 // styles
 import "../style.css";
 import Crawl from "./pages/crawl";
+import Admin from "./pages/admin/book";
+import ManagementBook from "./pages/admin/book/management";
 
 // Config router
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a", hash:true });
 
 router.on({
   "/": function () {
@@ -25,6 +27,12 @@ router.on({
   "/crawl/:id": function (param) {
     print(Crawl, param)
   },
+  "/admin": function (param) {
+    print(Admin, param)
+  },
+  "/admin/books/:id": function(param) {
+    print(ManagementBook, param)
+  }
 });
 router.resolve();
 // End config router
