@@ -29,7 +29,6 @@ function cost(x) {
     } else { return "" }
 }
 //nha san suat +ten neu manufacturer =rong thi  moi in publisher
-function check(sx, )
 export {
     apiGet,
     apiGetCallback,

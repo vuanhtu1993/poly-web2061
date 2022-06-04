@@ -7,6 +7,7 @@ import BookDetail from "./pages/book/detail";
 import { apiGet, apiGetCallback, getImage, getImagePromise, priceline, cost } from "./api";
 // styles
 import "../style.css";
+import admin from "./pages/admin";
 // Config router
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -20,6 +21,9 @@ router.on({
     "/books/:id": function(pram) {
         print(BookDetail, pram)
     },
+    "/admin": function(pram) {
+        print(admin, pram)
+    }
 });
 router.resolve();
 // End config router
