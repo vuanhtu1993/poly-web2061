@@ -7,7 +7,7 @@ import BookDetail from "./pages/book/detail";
 import { apiGet, apiGetCallback, getImage, getImagePromise, priceline, cost } from "./api";
 // styles
 import "../style.css";
-import admin from "./pages/admin";
+import admin from "./pages/admin/book";
 // Config router
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -21,8 +21,11 @@ router.on({
     "/books/:id": function(pram) {
         print(BookDetail, pram)
     },
-    "/admin": function(pram) {
+    "/admin/books": function(pram) {
         print(admin, pram)
+    },
+    "/admin/books/:id": function(pram) {
+        print(adBookDetail, pram)
     }
 });
 router.resolve();

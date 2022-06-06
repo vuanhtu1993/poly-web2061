@@ -42,7 +42,7 @@ const Home = {
                             <p class="py-2 text-left text-xs">${item.title}</p>
                             <p class="font-bold text-left">${item.sale_off} 
                                <span class="underline  text-[#ff424e]">đ</span>
-                                    <span>
+                                    <span>  
                                     ${cost((100-((item.sale_off/item.price)*100)).toFixed())}
                                     </span></p>
                         </a>
