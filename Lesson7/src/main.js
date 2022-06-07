@@ -44,6 +44,6 @@ async function print(content, param) {
   document.querySelector("#footer").innerHTML = Footer.render();
   // Add event vào các thành phần đã được tạo ra
   if(content.afterRender) {
-    await content.afterRender(param)
+    await content.afterRender()
   }
 }
