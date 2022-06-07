@@ -12,7 +12,7 @@ import Admin from "./pages/admin/book";
 import ManagementBook from "./pages/admin/book/management";
 
 // Config router
-const router = new Navigo("/", { linksSelector: "a", hash:true });
+const router = new Navigo("/", { linksSelector: "a" });
 
 router.on({
   "/": function () {
@@ -39,8 +39,13 @@ router.resolve();
 
 async function print(content, param) {
   document.querySelector("#header").innerHTML = Header.render();
+  // Nơi page được tạo ra
   document.querySelector("#app").innerHTML = await content.render(param);
   document.querySelector("#footer").innerHTML = Footer.render();
+  // Add event vào các thành phần đã được tạo ra
+  if(content.afterRender) {
+    await content.afterRender(param)
+  }
 }
 
 // Asynchronous
