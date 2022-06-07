@@ -58,7 +58,7 @@
         }
       ],
       "list_price": 109000,
-      "name": "Càng Kỷ Luật, Càng Tự Do - Tái bản",
+      "name": "Càng Kỷ Luật, Càng Tự Do - Tái bản lần 3",
       "original_price": 109000,
       "quantity_sold": {
         "text": "Đã bán 601",
@@ -163,7 +163,7 @@
         }
       ],
       "list_price": 138000,
-      "name": "101 BÍ KÍP SỐNG SÓT NƠI CÔNG SỞ - Nguyễn Anh Dũng",
+      "name": "101 BÍ KÍP SỐNG SÓT NƠI CÔNG SỞ - Tái bản lần 1",
       "original_price": 138000,
       "rating_average": 0,
       "short_description": "Chúng ta đang sống trong một thời đại vội vã, dường như mọi giao tiếp đều ở trên màn hình xanh, và dường như chúng ta thường quên đi những niềm vui giản dị, những ấm áp yêu thương, những cử chỉ chân t...",
@@ -189,7 +189,8 @@
           ]
         }
       ],
-      "id": 3
+      "id": 3,
+      "isHidden": true
     },
     {
       "authors": [

@@ -5,7 +5,7 @@ const Header = {
         <div class="flex justify-between items-center py-4 container mx-auto">
             <div>
             <a href="/">
-                <img class="max-w-[70px]" src="/public/images/logo.svg" alt="Logo" />
+                <img class="max-w-[70px]" src="/images/logo.svg" alt="Logo" />
             </a>
             </div>
 
@@ -29,7 +29,7 @@ const Header = {
                 <div>
                 <img
                     class="max-w-[30px] mr-3 text-[#fff]"
-                    src="/public/images/user.png"
+                    src="/images/user.png"
                     alt=""
                 />
                 </div>

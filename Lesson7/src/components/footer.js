@@ -77,10 +77,10 @@ const Footer = {
             <div class="flex mt-3">
             <img
                 class="max-w-[30px] mr-[10px]"
-                src="/public/images/bo-cong-thuong-2.png"
+                src="/images/bo-cong-thuong-2.png"
                 alt=""
             />
-            <img class="max-w-[80px]" src="/public/images/bo-cong-thuong.svg" alt="" />
+            <img class="max-w-[80px]" src="/images/bo-cong-thuong.svg" alt="" />
             </div>
         </div>
 
@@ -90,7 +90,7 @@ const Footer = {
             </h3>
 
             <div>
-            <img class="max-w-[200px] mt-2" src="/public/images/sprite.png" alt="" />
+            <img class="max-w-[200px] mt-2" src="/images/sprite.png" alt="" />
             </div>
             <h3 class="font-medium text-black text-base capitalize mt-3">
             dịch vụ giao hàng
@@ -108,11 +108,11 @@ const Footer = {
             <h3>tải ứng dụng trên điện thoại</h3>
             <div class="flex justify-between items-center mt-3">
             <div>
-                <img class="max-w-[80%]" src="/public/images/qrcode.png" alt="" />
+                <img class="max-w-[80%]" src="/images/qrcode.png" alt="" />
             </div>
             <div class="flex flex-wrap">
-                <img class="max-w-[70%] mb-2" src="/public/images/appstore.png" alt="" />
-                <img class="max-w-[70%]" src="/public/images/playstore.png" alt="" />
+                <img class="max-w-[70%] mb-2" src="/images/appstore.png" alt="" />
+                <img class="max-w-[70%]" src="/images/playstore.png" alt="" />
             </div>
             </div>
         </div>
