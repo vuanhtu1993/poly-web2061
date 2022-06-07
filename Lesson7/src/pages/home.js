@@ -1,10 +1,11 @@
 import { apiGet } from '../api'
-import { cost } from '../api'
+import { cost } from '../optionf'
 const Home = {
         render: async function() {
-                let data = await apiGet('/books')
-                console.log(data)
-
+                const data = await apiGet('/books');
+                // console.log(data)
+                if (!data) return;
+                // console.log(data[4].current_seller.price)
                 return /*html*/ `
         <div class="flex">
             <div class="basis-2/12">
@@ -14,8 +15,7 @@ const Home = {
             <a class="py-2" href="">Sách tiếng Việt</a>
             <a class="py-2" href="">Văn phòng phẩm</a> 
             <a class="py-2" href="">Quà lưu niệm</a> 
-            
-
+        
             </div>
             
             </div>
@@ -34,30 +34,33 @@ const Home = {
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Máy tính bỏ túi">Máy tính bỏ túi</button>
              </div>
                 <div class="grid grid-cols-4 gap-4">
-                    ${data.map(item => /*html*/`                 
+                    ${data.map(function (item,id) {
+                        return/*html*/`       
+                         
                     <div class="px-7 py-3 border-2 hover:shadow-md"> 
                         <a href="/books/${item.id}">
-                            <div class=""><img src="${item.image}" alt=""></div>
+                            <div class=""><img src="${item.images[0].thumbnail_url}" alt="img"></div>
                             
-                            <p class="py-2 text-left text-xs">${item.title}</p>
-                            <p class="font-bold text-left">${item.sale_off} 
-                               <span class="underline  text-[#ff424e]">đ</span>
-                                    <span>  
-                                    ${cost((100-((item.sale_off/item.price)*100)).toFixed())}
+                            <p class="py-2 text-left text-xs">${item.name}</p>
+                            <p id="isseller" class="font-bold text-left">${item.current_seller.price} 
+                               <span class="underline">đ</span>
+                                    <span class="text-[#ff424e]" >  
+                                    ${cost((100-((item.current_seller.price/item.original_price)*100)).toFixed())}
                                     </span></p>
                         </a>
                      </div>
              `
-                    ).join('')}                                  
+         } ).join('')}                                  
                 </div>
             </div>
         </div>  
         `
     },
     
-    renderId : async function() {
+    afterRender: async function() {
 
-        console.log( document.querySelector(".btn"))
+       // console.log(document.querySelectorAll("#isseller"))
+        
 
         // let data = await apiGet('/books');
         // console.log(data)

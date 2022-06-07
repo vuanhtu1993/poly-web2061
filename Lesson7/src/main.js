@@ -4,10 +4,12 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import Home from "./pages/home";
 import BookDetail from "./pages/book/detail";
-import { apiGet, apiGetCallback, getImage, getImagePromise, priceline, cost } from "./api";
+import { apiGet, apiGetCallback, getImage, getImagePromise } from "./api";
+import { priceline, cost } from "./optionf";
 // styles
 import "../style.css";
 import admin from "./pages/admin/book";
+import adBookDetail from "./pages/admin/book/manage";
 // Config router
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -24,7 +26,7 @@ router.on({
     "/admin/books": function(pram) {
         print(admin, pram)
     },
-    "/admin/books/:id": function(pram) {
+    "admin/books/:id": function(pram) {
         print(adBookDetail, pram)
     }
 });
@@ -33,8 +35,9 @@ router.resolve();
 
 async function print(content, param) {
     document.querySelector("#header").innerHTML = Header.render();
-    document.querySelector("#app").innerHTML = await content.render(param);
+    if (content) { document.querySelector("#app").innerHTML = await content.render(param); }
     document.querySelector("#footer").innerHTML = Footer.render();
+    if (content.afterRender) { content.afterRender(); }
 }
 
 // Asynchronous

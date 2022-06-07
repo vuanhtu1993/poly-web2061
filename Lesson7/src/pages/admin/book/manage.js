@@ -1,67 +1,102 @@
-import { apiGet } from "../../api"
-import { priceline } from "../../api"
-import { cost } from "../../api"
+import { apiGet, apiPut } from "../../../api";
+
 const adBookDetail = {
-    render: async function(param) {
-        const book = await apiGet(`/books/${param.data.id}`)
-        console.log(book)
-        return /*html*/ `
-            <div class="flex py-14 max-h-full bg-white">
-            <div class="m-auto px-3 py-5">
-            <img src="${book.image}" alt="">
-            </div>
-                
-                <div class="flex basis-8/12 px-2 py-2 border-l-2">
-                <div class="">
-                    <h6 class="text-xs px-3">${book.short_description}</h6>
-                    <div class="text-2xl font-light px-3 py-3">${
-                      book.title
-                    }</div>                   
-                    <div class="text-4xl font-semibold bg-[#f5eeee] rounded pl-5 py-5">${
-                      book.sale_off
-                    }
-                     <span class="underline text-[#ff424e]">đ</span>
-                     <span class="line-through text-gray-400 text-base">${priceline(
-                       book.sale_off,
-                       book.price
-                     )}</span>
-                     <span class="rounded border-2 bg-white text-sm">
-                     ${cost((100-((book.sale_off/book.price)*100)).toFixed())}
-                     </span>
-                     </div>
+        render: async function(param) {
+                // console.log(param, "=======param=======")
+                const data = await apiGet(`/books/${param.data.id}`)
+                return /*html*/ `
+            <div class="container mx-auto">
+                <h2 class="text-2xl text-primary-dark mt-5">Admin/Book Detail</h2>
+                <div class="flex space-x-4 mt-3">
+                    <form id="formPut" class="w-full max-w-lg">
+                    <input id="id" type="hidden" value="${data.id}">
+                        <div class="w-full">
+                            <label>Tên sản phẩm</label>
+                            <input class="block w-full border rounded py-3 px-4 mb-3"
+                            id="name" 
+                            type="text" 
+                            value="${data.name}"
+                            >
+                        </div>
+                        <div class="w-full">
+                            <label>Tên tác giả</label>
+                            <input class="block w-full border rounded py-3 px-4 mb-3"
+                            id="authors-name" 
+                            type="text" 
+                            value="${data.authors?.[0].name}"
+                            >
+                        </div>
+                        <div class="w-full">
+                            <label>categories</label>
+                            <input class="block w-full border rounded py-3 px-4 mb-3"
+                            id="categories-name" 
+                            type="text" 
+                            value="${data.categories?.name}"
+                            >
+                        </div>
+                        <div class="w-full">
+                            <label>SellerPrice</label>
+                            <input class="block w-full border rounded py-3 px-4 mb-3"
+                            id="SellerPrice" 
+                            type="number" 
+                            value="${data.current_seller.price}"
+                            >
+                        </div>
+                        <div class="w-full mt-3">
+                            <label>Mô tả ngắn</label>
+                            <textarea class="block w-full border rounded py-3 px-4 mb-3" 
+                            id="short_description" 
+                            cols="50"
+                            rows="5"
+                            type="text">${data.short_description}</textarea>
+                        </div>
+                        <div class="w-full mt-3">
+                            <label>Mô tả</label>
+                            <textarea class="block w-full border rounded py-3 px-4 mb-3" 
+                            id="description" 
+                            cols="50"
+                            rows="5"
+                            type="text">${data.description}</textarea>
+                        </div>
+                        <div class="grid grid-cols-2">
+                        <button class="bg-[#5c92ff] rounded mx-3">back</button>
+                        <button id="btn-submit" class="bg-[#5c92ff] rounded mx-3">Submit</button>
+                        </div>
+        
+                    </form>
+                    <div>
+                        <img src="${data.images[0].base_url}" alt="image">
+                      <div class="grid grid-cols-7 gap-5">
+                      ${data.images.map(function (img){
+                        return /*html*/`
+                        <a href=""><img src="${img.thumbnail_url}"></a>
+                        `
+                      })}        
+                      </div>
+                    </div>
+                    <div class="">
+                    
+                    </div>
                 </div>
-                </div>           
+                
             </div>
-             <div class="mt-5 bg-white px-3 py-3">
-                        <h2 class="text-xl font-semibold py-3">Thông tin chi tiết</h2>
-               <table class="table-auto">
-                 <tbody>
+        `
+    },
+   async afterRender(){
+      const id = document.querySelector('#id').value;
+      const newbook = await apiGet(`/books/${id}`)
+      const name =document.querySelector('#name')
+    
+      const btnsub = document.querySelector("#btn-submit")
+      btnsub.addEventListener("click",function(e){
+        e.preventDefault()
+         newbook.name = name.value
+         apiPut(`/books/${id}`, newbook)
+         .then(res=> alert('Update dữ liệu thành công!'))
+         .catch(err=> alert("error"))
+      })
 
-                        <tr>
-                            <td class="bg-[#efefef] px-4 py-4 ">Công ty phát hành</td>
-                            <td class="px-4">${book.publisher}</td>
-                        </tr>
-                        <tr>
-                             <td class="bg-[#efefef] px-4 py-4">Nhà xuất bản</td>
-                            <td class="px-4">${book.publisher}</td>
-                        </tr>
-                        <tr >
-                             <td class="bg-[#efefef] px-4 py-4">Loại sách</td>
-                            <td class="px-4">${book.categories}</td>
-                        </tr>
-
-                 </tbody>
-              </table>
-             </div>
-             <div class="mt-5 bg-white px-3 py-3">
-             <h1 class="text-xl font-semibold py-3">Mô Tả Sản Phẩm</h1>
-             <div class="">
-             ${book.description}
-             </div>
-             </div>
-
-        `;
     }
 }
 
-export default adBookDetail
+export default adBookDetail;

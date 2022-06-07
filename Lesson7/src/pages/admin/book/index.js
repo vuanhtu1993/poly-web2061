@@ -21,7 +21,7 @@ const admin = {
          return /*html*/ `
         <tr>
                 <td class="border border-1">${index}</td>    
-                <td class="border border-1"><a href="admin/books/${book.id}">${book.name}</a></td> 
+                <td class="border border-1"><a href="/admin/books/${book.id}">${book.name}</a></td> 
                 <td class="border border-1">${book.original_price}</td>  
                 <td class="p-3 grid grid-cols-9 gap-2 border border-1">
                 ${book.images.map(item =>
