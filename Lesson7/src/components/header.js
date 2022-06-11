@@ -1,3 +1,6 @@
+import Home from "../pages/home";
+import reRender from "../ultilities/reRender";
+
 const Header = {
   render: function () {
     return /*html*/ `
@@ -10,18 +13,21 @@ const Header = {
             </div>
 
             <div class="w-full flex justify-center items-center">
-            <label class="relative flex max-w-[746px] w-[100%] justify-end">
+            <form method="get" class="relative flex max-w-[746px] w-[100%] justify-end">
                 <input
                 class="max-w-[626px] placeholder:italic placeholder:text-sm outline-none block bg-white w-full py-3 pl-9 pr-3 shadow-sm sm:text-sm"
                 placeholder="Search for anything..."
                 type="text"
                 name="search"
+                id="header-input-search"
                 />
-                <span
-                class="bg-bg-search px-5 flex content-center items-center text-[#fff] cursor-pointer hover:bg-opacity-80 border-2 border-bg-search"
-                >Search</span
-                >
-            </label>
+                <button class="
+                bg-bg-search px-5 flex content-center 
+                items-center text-[#fff] cursor-pointer
+                hover:bg-opacity-80 border-2 border-bg-search"
+                id="header-btn-search"
+                >Search</button>
+            </form>
             </div>
 
             <div class="flex max-w-[250px] w-full justify-between">
@@ -56,6 +62,16 @@ const Header = {
         </div>
         </section>
         `;
+  },
+  afterRender() {
+    const btnSearchElement = document.querySelector('#header-btn-search')
+    const inputSearchElement = document.querySelector('#header-input-search')
+    btnSearchElement.addEventListener('click', function(e) {
+        e.preventDefault()
+        console.log(inputSearchElement.value)
+        history.replaceState(null, null, `?search=${inputSearchElement.value}`);
+        reRender('#app', Home)
+    })
   },
 };
 

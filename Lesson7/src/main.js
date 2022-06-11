@@ -39,6 +39,7 @@ router.resolve();
 
 async function print(content, param) {
   document.querySelector("#header").innerHTML = Header.render();
+  Header.afterRender()
   // Nơi page được tạo ra
   document.querySelector("#app").innerHTML = await content.render(param);
   document.querySelector("#footer").innerHTML = Footer.render();

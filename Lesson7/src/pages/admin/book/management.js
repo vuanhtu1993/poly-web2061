@@ -34,9 +34,12 @@ const ManagementBook = {
         updateBtn.addEventListener('click', function() {
             newData.name = nameElement.value
             apiPut(`/books/${id}`, newData)
-            .then(res => alert('Cập nhật dữ liệu thành công'))
+            .then(res => {
+                alert('Cập nhật dữ liệu thành công')
+            })
             .catch(console.log)
         })
+
     }
 }
 
