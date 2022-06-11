@@ -1,23 +1,37 @@
 import { apiGet } from '../api'
-import { $, cost, filterDuplicate, numberWithCommas } from '../optionf'
+import { $, cost, filterDuplicate, numberWithCommas, reRender } from '../optionf'
+import Header from '../components/header';
 const Home = {
         render: async function() {
-                const data = await apiGet('/books');
+                let data = await apiGet('/books');
                 //console.log(data)
-                let arr = []
-                data.map(function(index) {
-                    var categories = index.categories.name
-                    arr.push(categories)
-                })
-                let duplicate = filterDuplicate(arr)
-                    //console.log(duplicate)
+                //let arr = []
+                // data.map(function(index) {
+                //     var categories = index.categories.name
+                //     arr.push(categories)
+                // })
+                //let duplicate = filterDuplicate(arr)
+
+                const paramUrl = new URLSearchParams(location.search)
+                const search = paramUrl.get('search')
+                if (search) {
+                    data = await apiGet(`/books?categories.name=${search}`)
+                    data = await apiGet(`/books?q=${search}`)
+                } else {
+                    data = await apiGet('/books');
+                }
                 if (!data) return;
+                let categories = data.map(i => i.categories?.name)
+                categories = categories.filter(function(item, pos) {
+                    return categories.indexOf(item) == pos;
+                })
+                //console.log(categories)
                 // console.log(data[4].current_seller.price)
                 return /*html*/ `
         <div class="flex">
             <div class="basis-2/12">
 
-            <div class="grid grap-1 grid-cols-1 px-3 py-3  border border-b-gray-200 flex flex-start"> 
+            <div class="grid grap-1 grid-cols-1 px-3 py-3  border border-b-gray-200 flex-start"> 
             <h4 class="font-semibold text-base">DANH MỤC SẢN PHẨM</h4>
             <a class="dm py-2" data-id="Sách tiếng Việt" >Sách tiếng Việt</a>
             <a class="dm py-2" data-id="Sách tư duy - Kỹ năng sống " >Sách tư duy - Kỹ năng sống</a>
@@ -117,20 +131,11 @@ const Home = {
             <h2 class="text-xl pl-3 pb-3">Nhà sách tiki</h2>
             <img src="https://salt.tikicdn.com/cache/w1080/ts/banner/60/0c/44/11771d2ece938d92769724ffd3866c17.png.webp" alt="banner" />
             </div>       
-             <div class="btn flex basis-full">
-                <button class="btn px-3 py-3 hover:rounded-lg" data-id="All">All</button>
-                <button class="btn px-3 py-3 hover:rounded-lg" data-id="Tâm lý học">Tâm lý học</button>
-                <button class="btn px-3 py-3 hover:rounded-lg" data-id="Sách tiếng việt">Sách tiếng việt</button> 
-                <button class="btn px-3 py-3 hover:rounded-lg" data-id="Sách anh ngữ">Sách anh ngữ</button>
-                <button class="btn px-3 py-3 hover:rounded-lg" data-id="Sách EQ">Sách EQ</button>
-                <button class="btn px-3 py-3 hover:rounded-lg" data-id="Văn Phòng Phẩm">Văn Phòng Phẩm</button>
-                <button class="btn px-3 py-3 hover:rounded-lg" data-id="Máy tính bỏ túi">Máy tính bỏ túi</button>
-             </div>
+            
                
 
-                    ${duplicate.map(function (item,i) 
-                        {
-                            
+                    ${categories.map(function (item,i) 
+                        {                           
                         const books = data.filter(i => i.categories.name == item)
                         
                        return /*html*/`
@@ -138,7 +143,7 @@ const Home = {
                             <div class="grid grid-cols-4 gap-4">
                                 ${books.map(function(book){
                                     return/*html*/`                       
-                                    <div class="px-7 py-3 border border-collapse hover:shadow-md"> 
+                                    <div class="px-7 py-3 border border-collapse hover:shadow-md ${book.isHidden==true?"hidden":""}"> 
                                     
                                         <a href="/books/${(book.id)}">
                                             <div ><img class="" src="${book.images[0].thumbnail_url}" alt="img"></div>
@@ -175,8 +180,10 @@ const Home = {
             cate.addEventListener('click', async function(e) {
                 const catename = (cate.dataset.id)
                     // console.log(typeof catename)
-                const newdata = await apiGet(`/books?categories.name=${catename}`)
-                console.log(newdata)
+                //const newdata = )
+                //console.log(newdata)
+                history.replaceState(null, null, `?search=${catename}`);
+                reRender('#app', Home)
             })
 
         }

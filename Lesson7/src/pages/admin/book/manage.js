@@ -75,9 +75,10 @@ const adBookDetail = {
                         <div class="w-full">
                             <label>isHidden</label>
                             <input class="py-2 my-2"
-                            id="hide" 
-                            type="checkbox" 
+                            id="hidden" 
+                            type="checkbox"
                             value="${data.isHidden}"
+                             ${data.isHidden === true ? "checked": ""}
                             >
                         </div>
                         <div class="grid grid-cols-2">
@@ -114,6 +115,8 @@ const adBookDetail = {
       const rating_average = $('#rating_average')
       const short_description =$('#short_description')
       const description =$('#description')
+      console.log(newbook.hidden)
+        //console.log($('#hidden').value)
   //console.log(newbook.authors[0].name)
     
       const btnsub = document.querySelector("#btn-submit")
@@ -138,7 +141,8 @@ const adBookDetail = {
         {
             newbook.short_description =short_description.value}
         if(newbook.description)
-        {newbook.description =description.value}      
+        {newbook.description =description.value}  
+        newbook.hidden = $('#hidden').value   
          apiPut(`/books/${id}`, newbook)
          .then(res=> alert('Update dữ liệu thành công!'))
          .catch(err=> alert("error"))

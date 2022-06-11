@@ -32,10 +32,19 @@ function filterDuplicate(arr) {
     return newArr;
 }
 
+const reRender = async function(element, component) {
+    if (element) {
+        $(element).innerHTML = await component.render()
+    }
+    if (component.afterRender) {
+        component.afterRender()
+    }
+}
 export {
     priceline,
     cost,
     $,
     numberWithCommas,
-    filterDuplicate
+    filterDuplicate,
+    reRender
 }

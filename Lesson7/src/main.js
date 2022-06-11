@@ -39,6 +39,7 @@ router.resolve();
 
 async function print(content, param) {
     document.querySelector("#header").innerHTML = Header.render();
+    if(Header.afterRender){Header.afterRender()}
     if (content) { document.querySelector("#app").innerHTML = await content.render(param); }
     document.querySelector("#footer").innerHTML = Footer.render();
     if (content.afterRender) { content.afterRender(); }
