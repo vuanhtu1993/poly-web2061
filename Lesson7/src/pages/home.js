@@ -3,14 +3,12 @@ import { $, cost, filterDuplicate, numberWithCommas } from '../optionf'
 const Home = {
         render: async function() {
                 const data = await apiGet('/books');
-                // console.log(data)              
+                //console.log(data)
                 let arr = []
                 data.map(function(index) {
                     var categories = index.categories.name
                     arr.push(categories)
-
                 })
-
                 let duplicate = filterDuplicate(arr)
                     //console.log(duplicate)
                 if (!data) return;
@@ -128,53 +126,67 @@ const Home = {
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Văn Phòng Phẩm">Văn Phòng Phẩm</button>
                 <button class="btn px-3 py-3 hover:rounded-lg" data-id="Máy tính bỏ túi">Máy tính bỏ túi</button>
              </div>
-                <div class="grid grid-cols-4 gap-4">
-                    ${data.map(function (item,i) {
-                        return/*html*/`                       
-                    <div class="px-7 py-3 hover:shadow-md"> 
-                    
-                        <a href="/books/${(item.id)}">
-                            <div ><img class="" src="${item.images[0].thumbnail_url}" alt="img"></div>
-                            
-                            <p class="py-2 text-left text-xs">${item.name}</p>
-                            <p id="isseller" class="font-bold text-left">${
-                                numberWithCommas(item.current_seller.price)
+               
 
-                            } 
-                               <span class="underline">đ</span>
-                                    <span class="text-[#ff424e]" >  
-                                    ${cost((100-((item.current_seller.price/item.original_price)*100)).toFixed())}
-                                    </span></p>
-                        </a>
-                     </div>
-             `
-         } ).join('')}                                  
-                </div>
+                    ${duplicate.map(function (item,i) 
+                        {
+                            
+                        const books = data.filter(i => i.categories.name == item)
+                        
+                       return /*html*/`
+                            <div class="tendanhmuc py-2 px-2 font-bold text-xl">${item}</div>   
+                            <div class="grid grid-cols-4 gap-4">
+                                ${books.map(function(book){
+                                    return/*html*/`                       
+                                    <div class="px-7 py-3 border border-collapse hover:shadow-md"> 
+                                    
+                                        <a href="/books/${(book.id)}">
+                                            <div ><img class="" src="${book.images[0].thumbnail_url}" alt="img"></div>
+                                            
+                                            <p class="py-2 text-left text-xs">${book.name}</p>
+                                            <p id="isseller" class="font-bold text-left">${
+                                                numberWithCommas(book.current_seller.price)
+                                    
+                                            } 
+                                               <span class="underline">đ</span>
+                                                    <span class="text-[#ff424e]" >  
+                                                    ${cost((100-((book.current_seller.price/book.original_price)*100)).toFixed())}
+                                                    </span></p>
+                                        </a>
+                                     </div>
+                                    `
+                            }).join('')}     
+                            </div>   
+                       `
+                                
+                         } 
+                         ).join('')}                                  
+                
             </div>
         </div>  
         `
     },
-    
+
     afterRender: function() {
 
-       const categories = $(".dm")//[0].dataset.id
+        const categories = $(".dm") //[0].dataset.id
 
-       for(let cate of categories){
-        cate.addEventListener('click',async function(e){
-            const catename =(cate.dataset.id)
-            // console.log(typeof catename)
-            const newdata = await apiGet(`/books?categories.name=${catename}`)
-            console.log(newdata)
-        })
+        for (let cate of categories) {
+            cate.addEventListener('click', async function(e) {
+                const catename = (cate.dataset.id)
+                    // console.log(typeof catename)
+                const newdata = await apiGet(`/books?categories.name=${catename}`)
+                console.log(newdata)
+            })
 
-       }
-     
+        }
+
 
         // let data = await apiGet('/books');
         // console.log(data)
-    
+
     }
-    
+
 }
 
 
