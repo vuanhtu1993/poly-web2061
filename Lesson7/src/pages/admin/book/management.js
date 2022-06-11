@@ -11,7 +11,7 @@ const ManagementBook = {
                     <div class="flex-none w-1/3">
                         <div class="flex flex-col">
                             <label class="font-bold">Tên sản phẩm:</label>
-                            <input class="w-full px-3 py-2 border border-primary" value="${book.name}">
+                            <input id="book-management-name" class="w-full px-3 py-2 border border-primary" value="${book.name}">
                         </div>
                         <button class="bg-primary py-3 px-2 mt-8" id="book-management-update">Cập nhật sản phẩm</button>
                     </div>
@@ -24,11 +24,18 @@ const ManagementBook = {
             </div>
         `
     },
-    afterRender: function() {
+    afterRender: async function(param) {
+        const id = param.data.id
+        const newData = await apiGet(`/books/${id}`)
+
         const updateBtn = document.querySelector('#book-management-update')
+        const nameElement = document.querySelector('#book-management-name')
 
         updateBtn.addEventListener('click', function() {
-            console.log("Dang update day")
+            newData.name = nameElement.value
+            apiPut(`/books/${id}`, newData)
+            .then(res => alert('Cập nhật dữ liệu thành công'))
+            .catch(console.log)
         })
     }
 }

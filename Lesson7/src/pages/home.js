@@ -3,8 +3,10 @@ import {apiGet} from '../api'
 const Home = {
     render: async function() {
         let data = await apiGet('/books')
-        console.log(data)
+        // console.log(data)
         let categories = data.map(i => i.categories?.name)
+        console.log(categories)
+        
         categories = categories.filter(function(item, pos) {
             return categories.indexOf(item) == pos;
         })
