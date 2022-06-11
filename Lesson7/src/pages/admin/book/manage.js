@@ -1,9 +1,13 @@
 import { apiGet, apiPut } from "../../../api";
+import { $ } from "../../../optionf";
 
 const adBookDetail = {
         render: async function(param) {
                 // console.log(param, "=======param=======")
                 const data = await apiGet(`/books/${param.data.id}`)
+
+
+
                 return /*html*/ `
             <div class="container mx-auto">
                 <h2 class="text-2xl text-primary-dark mt-5">Admin/Book Detail</h2>
@@ -42,6 +46,16 @@ const adBookDetail = {
                             value="${data.current_seller.price}"
                             >
                         </div>
+                        <div class="w-full">
+                            <label>Số sao</label>
+                            <input class="block w-full border rounded py-3 px-4 mb-3"
+                            id="rating_average" 
+                            type="number" 
+                            value="${data.rating_average}"
+                            min="0"
+                            max="5"
+                            >
+                        </div>
                         <div class="w-full mt-3">
                             <label>Mô tả ngắn</label>
                             <textarea class="block w-full border rounded py-3 px-4 mb-3" 
@@ -59,7 +73,7 @@ const adBookDetail = {
                             type="text">${data.description}</textarea>
                         </div>
                         <div class="grid grid-cols-2">
-                        <button class="bg-[#5c92ff] rounded mx-3">back</button>
+                        <button class="bg-[#5c92ff] rounded mx-3">Thông số chi tiết</button>
                         <button id="btn-submit" class="bg-[#5c92ff] rounded mx-3">Submit</button>
                         </div>
         
@@ -86,11 +100,21 @@ const adBookDetail = {
       const id = document.querySelector('#id').value;
       const newbook = await apiGet(`/books/${id}`)
       const name =document.querySelector('#name')
+      const authors = $('#authors-name')
+      const categories = $('#categories-name')
+      const SellerPrice = $('#SellerPrice')
+      const rating_average = $('#rating_average')
+  //console.log(newbook.authors[0].name)
     
       const btnsub = document.querySelector("#btn-submit")
       btnsub.addEventListener("click",function(e){
         e.preventDefault()
          newbook.name = name.value
+         newbook.authors[0].name = authors.value
+         newbook.authors[0].slug = authors.value.toLowerCase().replace(/\s/g, '-')
+         newbook.categories.name = categories.value
+         newbook.current_seller.price = SellerPrice.value
+         newbook.rating_average = rating_average.value
          apiPut(`/books/${id}`, newbook)
          .then(res=> alert('Update dữ liệu thành công!'))
          .catch(err=> alert("error"))

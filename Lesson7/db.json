@@ -3,6 +3,7 @@
     {
       "email": "olivier@mail.com",
       "password": "$2a$10$v8U/FwZCgW6yBLeLURNn.uQA7CGgWUVuRP4LcnfvMXkW5VuGewuy6",
+      "address": "Đường vào tim em <3",
       "id": 1
     }
   ],
@@ -191,7 +192,7 @@
         "name": "Eco Trading",
         "link": "https://tiki.vn/cua-hang/eco-trading",
         "logo": "https://vcdn.tikicdn.com/ts/seller/c1/6e/2c/24f7e2c8a03dfaf82f2d7256576818b9.png",
-        "price": 100000,
+        "price": "100000",
         "product_id": "17879296",
         "store_id": 19720,
         "is_best_store": false,
@@ -227,7 +228,7 @@
         "text": "Đã bán 1000+",
         "value": 5869
       },
-      "rating_average": 4.8,
+      "rating_average": "0",
       "short_description": "*** Nội dung phiên bản tái bản không có thay đổi so với phiên bản đầu, chỉ thay đổi format và số đăng ký năm theo Luật Xuất Bản ***---------------------------------------Bạn có biết:- Các thủ khoa ...",
       "specifications": [
         {

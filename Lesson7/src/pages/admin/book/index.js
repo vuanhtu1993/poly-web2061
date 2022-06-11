@@ -8,11 +8,11 @@ const admin = {
         <h1>ADMIN</h1>
 <table>
         <thead>
-        <tr>
+        <tr class="bg-blue-600 py-3">
             <th>ID</th>
             <th>Tên</th>
             <th>Giá</th>
-            <th>Ảnh 1</th>
+            <th>Ảnh</th>
             <th>Tác giả</th>
         </tr>
     </thead>

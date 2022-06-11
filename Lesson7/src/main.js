@@ -10,6 +10,7 @@ import { priceline, cost } from "./optionf";
 import "../style.css";
 import admin from "./pages/admin/book";
 import adBookDetail from "./pages/admin/book/manage";
+import Signin from "./pages/signin";
 // Config router
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -28,6 +29,9 @@ router.on({
     },
     "admin/books/:id": function(pram) {
         print(adBookDetail, pram)
+    },
+    "/signin": function(pram) {
+        print(Signin, pram)
     }
 });
 router.resolve();
