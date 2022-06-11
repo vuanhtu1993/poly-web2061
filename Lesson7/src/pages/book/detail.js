@@ -5,7 +5,9 @@ const BookDetail = {
         render: async function(param) {
                 const user = await apiGet(`/users/1`)
                 const book = await apiGet(`/books/${param.data.id}`)
-                console.log(book)
+                const categoriesname = book.categories.name
+                const samebook = await apiGet(`/books/?categories.name=${categoriesname}`)
+                console.log(samebook)
                 const specifications = book.specifications[0].attributes
                 return /*html*/ `
             <div class="flex py-14 max-h-full bg-white">
@@ -16,7 +18,7 @@ const BookDetail = {
               return /*html*/`
               <a href=""><img src="${img.thumbnail_url}"></a>
               `
-            })}                  
+            }).join('')}                  
             </div>
             </div>
                 <div class="flex basis-7/12 px-2 py-2 border-l-2">
@@ -146,25 +148,29 @@ const BookDetail = {
                     
                 </div>
                 </div>                       
-          
-                        <div class="sanphamtuongtu ">
-                           <h4>Sản Phẩm Tương Tự</h4>                  
-                             
-                        <div class="px-7 py-3 hover:shadow-md"> 
-                            <a href="/books/${book.id}">
-                                <div ><img class="" src="${book.images[0].thumbnail_url}" alt="img"></div>
-                                
-                                <p class="py-2 text-left text-xs">${book.name}</p>
-                                <p id="isseller" class="font-bold text-left">${book.current_seller.price} 
-                                   <span class="underline">đ</span>
-                                        <span class="text-[#ff424e]" >  
-                                        ${cost((100-((book.current_seller.price/book.original_price)*100)).toFixed())}
-                                        </span></p>
-                            </a>
-                         </div>
-                                             
-                    
-
+                <h4>Sản Phẩm Tương Tự</h4>      
+                        <div class="sanphamtuongtu grid gap-x-2 gap-y-1 grid-cols-8">
+                                                       
+                        
+                        ${samebook.map(function(book){
+                          return /*html*/`
+                          <div class="px-7 py-3 hover:shadow-md"> 
+                          <a href="/books/${book.id}">
+                          <div ><img class="" src="${book.images[0].thumbnail_url}" alt="img"></div>
+                          
+                          <p class="py-2 text-left text-xs">${book.name}</p>
+                          <p id="isseller" class="font-bold text-left">${book.current_seller.price} 
+                             <span class="underline">đ</span>
+                                  <span class="text-[#ff424e]" >  
+                                  ${cost((100-((book.current_seller.price/book.original_price)*100)).toFixed())}
+                                  </span></p>
+                      </a>
+                      </div>
+                      `
+                        }).join('')}
+                           
+                         
+                                          
                         </div>
                         
                         </div>

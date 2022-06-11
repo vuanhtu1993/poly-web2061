@@ -72,6 +72,14 @@ const adBookDetail = {
                             rows="5"
                             type="text">${data.description}</textarea>
                         </div>
+                        <div class="w-full">
+                            <label>isHidden</label>
+                            <input class="py-2 my-2"
+                            id="hide" 
+                            type="checkbox" 
+                            value="${data.isHidden}"
+                            >
+                        </div>
                         <div class="grid grid-cols-2">
                         <button class="bg-[#5c92ff] rounded mx-3">Thông số chi tiết</button>
                         <button id="btn-submit" class="bg-[#5c92ff] rounded mx-3">Submit</button>
@@ -85,7 +93,7 @@ const adBookDetail = {
                         return /*html*/`
                         <a href=""><img src="${img.thumbnail_url}"></a>
                         `
-                      })}        
+                      }).join('')}        
                       </div>
                     </div>
                     <div class="">
@@ -104,17 +112,33 @@ const adBookDetail = {
       const categories = $('#categories-name')
       const SellerPrice = $('#SellerPrice')
       const rating_average = $('#rating_average')
+      const short_description =$('#short_description')
+      const description =$('#description')
   //console.log(newbook.authors[0].name)
     
       const btnsub = document.querySelector("#btn-submit")
       btnsub.addEventListener("click",function(e){
         e.preventDefault()
-         newbook.name = name.value
-         newbook.authors[0].name = authors.value
-         newbook.authors[0].slug = authors.value.toLowerCase().replace(/\s/g, '-')
-         newbook.categories.name = categories.value
-         newbook.current_seller.price = SellerPrice.value
-         newbook.rating_average = rating_average.value
+        if( newbook.name){
+            newbook.name = name.value
+        }     
+        if(authors[0])
+        {newbook.authors[0].name = authors.value
+            newbook.authors[0].slug = authors.value.toLowerCase().replace(/\s/g, '-')}    
+        if(newbook.categories.name){
+            newbook.categories.name = categories.value
+        }
+        if(newbook.current_seller.price)
+        {newbook.current_seller.price = SellerPrice.value}
+
+        if(newbook.rating_average)
+        {newbook.rating_average = rating_average.value}
+
+        if(newbook.short_description)  
+        {
+            newbook.short_description =short_description.value}
+        if(newbook.description)
+        {newbook.description =description.value}      
          apiPut(`/books/${id}`, newbook)
          .then(res=> alert('Update dữ liệu thành công!'))
          .catch(err=> alert("error"))

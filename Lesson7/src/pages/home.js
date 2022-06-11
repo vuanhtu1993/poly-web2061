@@ -1,5 +1,5 @@
 import { apiGet } from '../api'
-import { cost, filterDuplicate, numberWithCommas } from '../optionf'
+import { $, cost, filterDuplicate, numberWithCommas } from '../optionf'
 const Home = {
         render: async function() {
                 const data = await apiGet('/books');
@@ -10,19 +10,26 @@ const Home = {
                     arr.push(categories)
 
                 })
+
                 let duplicate = filterDuplicate(arr)
+                    //console.log(duplicate)
                 if (!data) return;
                 // console.log(data[4].current_seller.price)
                 return /*html*/ `
         <div class="flex">
             <div class="basis-2/12">
 
-            <div class="grid grap-1 grid-cols-1 px-3 py-3  border border-b-gray-200"> 
+            <div class="grid grap-1 grid-cols-1 px-3 py-3  border border-b-gray-200 flex flex-start"> 
             <h4 class="font-semibold text-base">DANH MỤC SẢN PHẨM</h4>
-            <a class="py-2" href="">English Books</a>
-            <a class="py-2" href="">Sách tiếng Việt</a>
-            <a class="py-2" href="">Văn phòng phẩm</a> 
-            <a class="py-2" href="">Quà lưu niệm</a>    
+            <a class="dm py-2" data-id="Sách tiếng Việt" >Sách tiếng Việt</a>
+            <a class="dm py-2" data-id="Sách tư duy - Kỹ năng sống " >Sách tư duy - Kỹ năng sống</a>
+            <a class="dm py-2" data-id="Sách doanh nhân" >Sách doanh nhân</a> 
+            <a class="dm py-2" data-id="Sách kỹ năng làm việc ">Sách kỹ năng làm việc </a>    
+            <a class="dm py-2" data-id="Truyện ngắn - Tản văn - Tạp Văn" >Truyện ngắn - Tản văn - Tạp Văn</a>    
+            <a class="dm py-2" data-id="Tác phẩm kinh điển" >Tác phẩm kinh điển</a>  
+            <a class="dm py-2" data-id="English Books" >English Books</a>  
+            <a class="dm py-2" data-id="Grammar, vocabulary & skills" >Grammar, vocabulary & skills</a>  
+            <a class="dm py-2" data-id="Fiction - Literature"> Fiction - Literature </a>  
             </div>
 
             <div class="grid grap-1 grid-cols-1 px-3 py-3  border border-b-gray-200"> 
@@ -148,10 +155,20 @@ const Home = {
         `
     },
     
-    afterRender: async function() {
+    afterRender: function() {
 
-       // console.log(document.querySelectorAll("#isseller"))
-        
+       const categories = $(".dm")//[0].dataset.id
+
+       for(let cate of categories){
+        cate.addEventListener('click',async function(e){
+            const catename =(cate.dataset.id)
+            // console.log(typeof catename)
+            const newdata = await apiGet(`/books?categories.name=${catename}`)
+            console.log(newdata)
+        })
+
+       }
+     
 
         // let data = await apiGet('/books');
         // console.log(data)

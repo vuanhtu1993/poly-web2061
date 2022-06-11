@@ -27,7 +27,7 @@ const admin = {
                 ${book.images.map(item =>
                     /*html*/`
                <img width="180" src="${item.base_url}"> 
-               `)}
+               `).join('')}
                  </td>  
                  <td class="border border-1">${book.authors? book.authors.map(item=>item.name):""} </td>  
                    </tr>    

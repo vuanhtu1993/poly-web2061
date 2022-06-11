@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "axios": "^0.27.2",
+        "database-js": "^3.0.11",
         "navigo": "^8.11.1"
     }
 }
