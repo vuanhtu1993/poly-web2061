@@ -77,13 +77,12 @@ const adBookDetail = {
                             <input class="py-2 my-2"
                             id="hidden" 
                             type="checkbox"
-                            value="${data.isHidden}"
-                             ${data.isHidden === true ? "checked": ""}
+                            value="${data.isHidden}"                          
                             >
                         </div>
                         <div class="grid grid-cols-2">
-                        <button class="bg-[#5c92ff] rounded mx-3">Thông số chi tiết</button>
-                        <button id="btn-submit" class="bg-[#5c92ff] rounded mx-3">Submit</button>
+                        <button id="chitiet" class="bg-[#5c92ff] rounded mx-3"><a href="detail/${param.data.id}">Thông số chi tiết</button>
+                        <button id="btn-submit" class="bg-[#5c92ff] px-4 py-1 rounded mx-3">Submit</button>
                         </div>
         
                     </form>
@@ -115,7 +114,17 @@ const adBookDetail = {
       const rating_average = $('#rating_average')
       const short_description =$('#short_description')
       const description =$('#description')
+      const btnhidden =$('#hidden')
       console.log(newbook.hidden)
+      console.log(btnhidden.checked)
+      if(newbook.hidden === "false" ||newbook.hidden === false|| newbook.hidden === "undefined" || newbook.hidden === undefined){
+        btnhidden.checked =false
+        console.log("vao false")
+      }else{
+        btnhidden.checked =true
+        console.log("vao true")
+      }
+      console.log(btnhidden.checked)
         //console.log($('#hidden').value)
   //console.log(newbook.authors[0].name)
     
@@ -142,7 +151,10 @@ const adBookDetail = {
             newbook.short_description =short_description.value}
         if(newbook.description)
         {newbook.description =description.value}  
-        newbook.hidden = $('#hidden').value   
+        newbook.hidden = btnhidden.checked
+        if(newbook.isHidden){
+            newbook.isHidden = btnhidden.checked
+        }
          apiPut(`/books/${id}`, newbook)
          .then(res=> alert('Update dữ liệu thành công!'))
          .catch(err=> alert("error"))

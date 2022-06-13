@@ -1,5 +1,5 @@
 import { apiGet } from "../../api"
-import { priceline } from "../../optionf"
+import { numberWithCommas, priceline } from "../../optionf"
 import { cost } from "../../optionf"
 const BookDetail = {
         render: async function(param) {
@@ -153,13 +153,14 @@ const BookDetail = {
                                                        
                         
                         ${samebook.map(function(book){
+                         // samebook.splice(0, 0)
                           return /*html*/`
-                          <div class="px-7 py-3 hover:shadow-md"> 
+                          <div class="px-7 py-3 hover:shadow-md border rounded"> 
                           <a href="/books/${book.id}">
                           <div ><img class="" src="${book.images[0].thumbnail_url}" alt="img"></div>
                           
                           <p class="py-2 text-left text-xs">${book.name}</p>
-                          <p id="isseller" class="font-bold text-left">${book.current_seller.price} 
+                          <p id="isseller" class="font-bold text-left">${numberWithCommas(book.current_seller.price)} 
                              <span class="underline">đ</span>
                                   <span class="text-[#ff424e]" >  
                                   ${cost((100-((book.current_seller.price/book.original_price)*100)).toFixed())}

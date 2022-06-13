@@ -143,7 +143,7 @@ const Home = {
                             <div class="grid grid-cols-4 gap-4">
                                 ${books.map(function(book){
                                     return/*html*/`                       
-                                    <div class="px-7 py-3 border border-collapse hover:shadow-md ${book.isHidden==true?"hidden":""}"> 
+                                    <div class="px-7 py-3 border border-collapse hover:shadow-md ${book.hidden==true?"hidden":""}"> 
                                     
                                         <a href="/books/${(book.id)}">
                                             <div ><img class="" src="${book.images[0].thumbnail_url}" alt="img"></div>
