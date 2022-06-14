@@ -1,5 +1,6 @@
 const server = 'http://localhost:3000'
 import axios from 'axios'
+import instance from './config'
 // Lấy dữ liệu về
 function apiGet(uri) {
     return fetch(server + uri).then(res => res.json())
@@ -26,10 +27,14 @@ function getImage(url, callback) {
 function getImagePromise(url) {
     return fetch(url)
 }
+const remove = (id) => {
+    return instance.delete(`/products/${id}`);
+};
 export {
     apiGet,
     apiGetCallback,
     getImage,
     getImagePromise,
-    apiPut
+    apiPut,
+    remove
 }

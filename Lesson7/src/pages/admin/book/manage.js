@@ -115,25 +115,21 @@ const adBookDetail = {
       const short_description =$('#short_description')
       const description =$('#description')
       const btnhidden =$('#hidden')
-      console.log(newbook.hidden)
-      console.log(btnhidden.checked)
+    
       if(newbook.hidden === "false" ||newbook.hidden === false|| newbook.hidden === "undefined" || newbook.hidden === undefined){
         btnhidden.checked =false
-        console.log("vao false")
+
       }else{
         btnhidden.checked =true
-        console.log("vao true")
       }
-      console.log(btnhidden.checked)
-        //console.log($('#hidden').value)
-  //console.log(newbook.authors[0].name)
-    
+
       const btnsub = document.querySelector("#btn-submit")
       btnsub.addEventListener("click",function(e){
         e.preventDefault()
         if( newbook.name){
             newbook.name = name.value
         }     
+        
         if(authors[0])
         {newbook.authors[0].name = authors.value
             newbook.authors[0].slug = authors.value.toLowerCase().replace(/\s/g, '-')}    
