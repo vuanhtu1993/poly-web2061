@@ -6,13 +6,13 @@ const Home = {
         const paramUrl = new URLSearchParams(location.search)
         console.log(paramUrl.get('search'))
         const search = paramUrl.get('search')
-        // if (search) {
-        //     var data = await apiGet(`/books?q=${"search"}`)
-        // } else {
-        //     var data = await apiGet(`/books`)
-        // }
+        if (search) {
+            var data = await apiGet(`/books?q=${"search"}`)
+        } else {
+            var data = await apiGet(`/books`)
+        }
 
-        var data = await apiGet(`/books?q=${search}`)
+        // var data = await apiGet(`/books?q=${search}`)
         
         let categories = data.map(i => i.categories?.name)
         categories = categories.filter(function(item, pos) {

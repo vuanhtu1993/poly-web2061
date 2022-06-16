@@ -5,21 +5,18 @@ const Crawl = {
         const id = params.data.id
         const data = await apiCrawl(`https://tiki.vn/api/v2/products/${id}`)
         let _new = {
-            authors: data.authors,
-            book_cover: data.book_cover,
             categories: data.categories,
-            current_seller: data.current_seller,
             description: data.description,
-            images: data.images,
-            list_price: data.list_price,
+            images: data.images[0],
             name: data.name,
+            sale_price: data.current_seller.price,
             original_price: data.original_price,
             quantity_sold: data.quantity_sold,
-            rating_average: data.rating_average,
+            rating: data.rating_average,
             short_description: data.short_description,
-            specifications: data.specifications,
+            specifications: data.specifications[0].attributes,
         }
-        const res = await apiPost('/books', _new)
+        const res = await apiPost('/cellphones', _new)
         return JSON.stringify(_new)
     }
 }
