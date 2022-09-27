@@ -1,36 +1,23 @@
-// api get image
-function getImageCallback(url, cb) {
-    fetch(url).then(function (res) {
-        cb(res)
+// Fetch image
+function fetchImage(url, cb) {
+    fetch(url).then(function(response) {
+        console.log(response, "response");
+        // Callback
+        cb(response)
     })
 }
 
-function renderImage(selector, value) {
-    document.querySelector(selector).src = value
+// fetchImage()
+
+// Render image
+function renderImage(seclector, value) {
+    document.querySelector(seclector).src = value
 }
 
-// renderImage('#image1', "./images/test.jpeg")
-
-// getImageCallback('https://picsum.photos/1000/700', function(res) {
-//     // Anonymous function
-//     console.log(res, 'ressssssssssss');
-//     renderImage("#image1", res.url)
-// })
-
-// Thực hiện getImage2 => Sau khi ảnh 1 được load xong thì ảnh 2 mới được load
-
-
-// Nested callback
-getImageCallback('https://picsum.photos/1000/700', function (res) {
+// Callback - Cách xử lý bất đồng bộ đầu tiên trong Js
+fetchImage("https://picsum.photos/400/300", function(res) {
     renderImage("#image1", res.url)
-    getImageCallback("https://picsum.photos/300/200", function (res) {
-        renderImage("#image2", res.url)
-        getImageCallback("https://picsum.photos/300/200", function (res) {
-            renderImage("#image3", res.url)
-            getImageCallback("https://picsum.photos/300/200", function (res) {
-                renderImage("#image4", res.url)
-            })
-        })
-    })
-    // Callback hell
 })
+
+// Khi ảnh 1 được load xong ảnh 2 mới đc load
+// Viết code tiếp ở bên dưới
