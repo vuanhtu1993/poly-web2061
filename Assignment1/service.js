@@ -1,7 +1,3 @@
-function logging(content) {
-    console.info("logging service", content);
-}
-
 function LocalStorageService() {
     return {
         get(itemName) {
@@ -36,6 +32,5 @@ function LocalStorageService() {
 var localStorageService = LocalStorageService()
 
 export {
-    logging,
     localStorageService
 }
