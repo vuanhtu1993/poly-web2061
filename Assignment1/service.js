@@ -6,19 +6,11 @@ function LocalStorageService() {
     return {
         get(itemName) {
             const item = localStorage.getItem(itemName);
-            const numPatt = new RegExp(/^\d+$/);
-            const jsonPatt = new RegExp(/[\[\{].*[\}\]]/);
+            // const numPatt = new RegExp(/^\d+$/);
+            // const jsonPatt = new RegExp(/[\[\{].*[\}\]]/);
 
             if (item) {
-                if (jsonPatt.test(item)) {
-                    return JSON.parse(item);
-                }
-                else if (numPatt.test(item)) {
-                    return parseFloat(item);
-                }
-                else {
-                    return item;
-                }
+                return JSON.parse(item)
             }
             else {
                 return null;
@@ -41,6 +33,9 @@ function LocalStorageService() {
 
 }
 
+var localStorageService = LocalStorageService()
+
 export {
-    logging
+    logging,
+    localStorageService
 }
