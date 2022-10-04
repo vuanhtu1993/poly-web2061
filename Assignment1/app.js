@@ -1,21 +1,23 @@
 // Service
-import {localStorageService} from './service.js'
-import {uploadImage} from './api.js'
-
 // Declaration - Khai báo
 var form = document.querySelector("#form")
 var image = document.querySelector("#image")
+var name = document.querySelector("#name")
+var amount = document.querySelector("#amount")
+var price = document.querySelector("#price")
+var type = document.querySelector("#type")
+var description = document.querySelector("#description")
 
 // Validate - Done
-var elementArray = ["name", "amount", "price", "description"]
-form.onsubmit = function (e) {
+var fields = ["name", "price", "amount", "description"]
+form.onsubmit = function(e) {
     e.preventDefault()
-    elementArray.forEach(function (item) {
+    fields.forEach(function(item) {
         clearError(item)
     })
-    elementArray.forEach(function (item) {
+    fields.forEach(function(item) {
         var field = document.querySelector("#" + item)
-        if (field.value == "") {
+        if(field.value === "") {
             showError(item, "Trường dữ liệu bắt buộc")
         }
     })
