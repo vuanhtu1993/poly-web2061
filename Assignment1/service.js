@@ -4,14 +4,12 @@ function LocalStorageService() {
             const item = localStorage.getItem(itemName);
             // const numPatt = new RegExp(/^\d+$/);
             // const jsonPatt = new RegExp(/[\[\{].*[\}\]]/);
-
             if (item) {
                 return JSON.parse(item)
             }
             else {
                 return null;
             }
-
         },
 
         set(itemName, item) {
