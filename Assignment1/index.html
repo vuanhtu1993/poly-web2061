@@ -29,15 +29,16 @@
             <div class="flex flex-col mb-4">
                 <label class="font-bold" for="">Loại đồ ăn</label>
                 <select name="" id="type" class="outline-none border">
-                    <option value="">Tráng miệng</option>
-                    <option value="">Đồ ăn nhẹ</option>
-                    <option value="">Đồ uống</option>
-                    <option value="">Đồ nướng</option>
+                    <option value="1">Tráng miệng</option>
+                    <option value="2">Đồ ăn nhẹ</option>
+                    <option value="3">Đồ uống</option>
+                    <option value="4">Đồ nướng</option>
                 </select>
             </div>
             <div class="flex flex-col mb-4">
                 <label class="font-bold" for="">Ảnh</label>
                 <input type="file" id="image" accept="image/png, image/gif, image/jpeg">
+                <div class="error text-red-500 text-sm"></div>
                 <img src="" alt="" id="preview-image">
             </div>
             <div class="flex flex-col mb-4">
