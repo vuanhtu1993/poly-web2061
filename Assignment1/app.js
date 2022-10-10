@@ -6,9 +6,11 @@ import {uploadImage} from './api.js'
 var form = document.querySelector("#form")
 var image = document.querySelector("#image")
 var preview_image = document.querySelector("#preview-image")
+var table = document.querySelector("#table")
 
 // Validate - Done
-var fields = ["name", "price", "amount", "description", "image", "type"]
+var fields = ["name", "price", "amount", "description", "type"]
+// Event
 form.onsubmit = function(e) {
     var error = false
     var data = {}
@@ -16,7 +18,10 @@ form.onsubmit = function(e) {
     fields.forEach(function(item) {
         clearError(item)
     })
+    // Validation
+    // forEach hàm để duyệt các phần từ trong mảng
     fields.forEach(function(item) {
+        // DOM
         var field = document.querySelector("#" + item)
         if(field.value == "") {
             showError(item, "Trường dữ liệu bắt buộc")
@@ -24,21 +29,23 @@ form.onsubmit = function(e) {
         }
         data[item] = field.value
     })
+    // Lấy đường dẫn ảnh
     if(preview_image.src) {
-        data["image"] = preview_image.src
+        data['image'] = preview_image.src
     }
-    console.log(error, "ERROR", data, "data");
     if(!error) {
-        var menu = localStorageService.get('menu');
+        var menu = localStorageService.get('menu')
         if(menu) {
-            menu.push(data);
+            // Thêm vào menu
+            menu.push(data)
         } else {
             menu = [data]
         }
         localStorageService.set('menu', menu)
-        alert('Thêm mới thành công')
-        resetForm()
+        alert('Thêm sản phẩm thành công')
     }
+    form.reset()
+    render()
 }
 
 function showError(id, content) {
@@ -55,11 +62,6 @@ function clearError(id) {
     }
 }
 
-function resetForm() {
-    form.reset()
-    preview_image.src = ""
-}
-
 // Handle image
 // url: https://image-uploader-anhhtus.herokuapp.com/api/upload
 image.onchange = function(e) {
@@ -68,9 +70,39 @@ image.onchange = function(e) {
     // Asynchronous IO
     reader.readAsDataURL(file)
     reader.onloadend = function() {
+        // Promise
         var result = uploadImage('https://image-uploader-anhhtus.herokuapp.com/api/upload', reader.result)
         result.then(function(res) {
             preview_image.src = res.secure_url
         })
     }
 }
+
+// In ra man hinh
+function render() {
+    var content = ""
+    var menu = localStorageService.get('menu')
+    // Duyệt mảng: For/For in/Foreach
+    if (menu) {
+        menu.forEach(function(item, index) {
+            // Template string
+            content += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.name}</td>
+                    <td>${item.amount}</td>
+                    <td>${item.type}</td>
+                    <td>${item.amount > 1 ? `<input type="checkbox"/>` : `<input type="checkbox" checked/>`}</td>
+                    <td>
+                        <button>Sửa</button>
+                        <button>Xoá</button>
+                    </td>
+                </tr>
+            `
+        })
+        // In ra table
+        table.innerHTML = content
+    }
+}
+
+render()
