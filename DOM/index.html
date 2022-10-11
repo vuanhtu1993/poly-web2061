@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Understading DOM - Document Object Model</h1>
+    <h2>Danh sach lop</h2>
+    <input type="text">
+    <ul>
+        <li>Tuấn <button class="remove">Xoá</button></li>
+        <li>Hoàng <button class="remove">Xoá</button></li>
+        <li>Tùng <button class="remove">Xoá</button></li>
+        <li>Khánh <button class="remove">Xoá</button></li>
+        <li>Linh <button class="remove">Xoá</button></li>
+        <li>Diệp <button class="remove">Xoá</button></li>
+    </ul>
+    <button>Event</button>
+    <script>
+        // Declaration
+        // Object
+        var h2 = document.querySelector('h2')
+        var button = document.querySelector('button')
+        var ul = document.querySelector('ul')
+        var input = document.querySelector('input')
+
+        button.onclick = function () {
+            ul.innerHTML += `
+                <li>${input.value}<button class="remove">Xoá</button></li>
+            `
+            input.value = ""
+        }
+
+        var removes = document.querySelectorAll('.remove')
+
+    </script>
+</body>
+
+</html>
