@@ -38,6 +38,9 @@ var array = [
 ]
 
 var list = document.querySelector('#list')
+var input = document.querySelector('#input-search')
+var btn = document.querySelector('#btn-search')
+
 function render(data) {
     var content = ""
     // Foreach không trả lại mảng mới
@@ -51,11 +54,11 @@ function render(data) {
 
 render(array)
 
-function timkiemtheoho() {
+function timkiemtheoho(string = "Nguyễn") {
     // Filter trả lại một mảng mới
     var newArray = array.filter(function(item) {
         var first_name = item.split(" ")[0]
-        if(first_name == "Nguyễn") {
+        if(first_name == string) {
             return true
         } else {
             return false
@@ -65,4 +68,6 @@ function timkiemtheoho() {
     render(newArray)
 }
 
-timkiemtheoho()
+btn.onclick = function() {
+    timkiemtheoho(input.value)
+}
