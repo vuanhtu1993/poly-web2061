@@ -9,7 +9,7 @@ var preview_image = document.querySelector("#preview-image")
 var table = document.querySelector("#table")
 
 // Validate - Done
-var fields = ["name", "price", "amount", "description", "type"]
+var fields = ["name", "price", "amount", "description", "image", "type"]
 // Event
 form.onsubmit = function(e) {
     var error = false
@@ -29,23 +29,21 @@ form.onsubmit = function(e) {
         }
         data[item] = field.value
     })
-    // Lấy đường dẫn ảnh
-    if(preview_image.src) {
-        data['image'] = preview_image.src
-    }
     if(!error) {
+        if(preview_image.src) {
+            data['image'] = preview_image.src
+        }
         var menu = localStorageService.get('menu')
         if(menu) {
-            // Thêm vào menu
+            // Thêm mới phần tử
             menu.push(data)
         } else {
             menu = [data]
         }
         localStorageService.set('menu', menu)
-        alert('Thêm sản phẩm thành công')
+        form.reset()
+        alert('Thêm món ăn thành công')
     }
-    form.reset()
-    render()
 }
 
 function showError(id, content) {
@@ -70,39 +68,9 @@ image.onchange = function(e) {
     // Asynchronous IO
     reader.readAsDataURL(file)
     reader.onloadend = function() {
-        // Promise
         var result = uploadImage('https://image-uploader-anhhtus.herokuapp.com/api/upload', reader.result)
-        result.then(function(res) {
-            preview_image.src = res.secure_url
+        result.then(function(response) {
+            preview_image.src = response.secure_url
         })
     }
 }
-
-// In ra man hinh
-function render() {
-    var content = ""
-    var menu = localStorageService.get('menu')
-    // Duyệt mảng: For/For in/Foreach
-    if (menu) {
-        menu.forEach(function(item, index) {
-            // Template string
-            content += `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${item.name}</td>
-                    <td>${item.amount}</td>
-                    <td>${item.type}</td>
-                    <td>${item.amount > 1 ? `<input type="checkbox"/>` : `<input type="checkbox" checked/>`}</td>
-                    <td>
-                        <button>Sửa</button>
-                        <button>Xoá</button>
-                    </td>
-                </tr>
-            `
-        })
-        // In ra table
-        table.innerHTML = content
-    }
-}
-
-render()
