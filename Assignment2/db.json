@@ -1,0 +1,23 @@
+{
+  "dish": [
+    {
+      "name": "Pizza bánh xèo tôm nhảy",
+      "description": "Thổi bùng vị giác cùng sự kết hợp mới lạ đến từ hương vị bánh xèo truyền thống trên nền bánh pizza, hòa quyện xốt Mayonnaise, phô mai Mozzarella và nguyên liệu Tôm Nhảy cho khẩu vị cũng phải nhún nhảy từ lát bánh đầu tiên!",
+      "price": 149000,
+      "categories": 1,
+      "type": "Sản phẩm mới",
+      "amount": 100,
+      "id": 1
+    },
+    {
+      "name": "Pizza Rau Củ (Xốt Bơ Tỏi) năm 2022",
+      "description": "Thanh Nhẹ Với Ô Liu Đen Tuyệt Hảo, Cà Chua Bi Tươi Ngon, Nấm, Thơm, Bắp, Hành Tây Và Phô Mai Mozzarella Cho Bạn Bữa Tiệc Rau Củ Tròn Vị",
+      "price": 79000,
+      "categories": 1,
+      "type": "Truyền thống",
+      "amount": 100,
+      "id": 2
+    }
+  ],
+  "categories": []
+}

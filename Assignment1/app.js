@@ -41,7 +41,7 @@ form.onsubmit = function (e) {
         }
         localStorageService.set('menu', menu)
         form.reset()
-        alert('Thêm sản phẩm thành công')
+        alert('Thêm món ăn thành công')
         render()
     }
 }
@@ -91,6 +91,27 @@ function render() {
                 <td><input type="checkbox" ${dishes.amount < 1 ? `checked` : ''}/></td>
             </tr>
         `
+        })
+        table.innerHTML = content
+    }
+}
+
+function render() {
+    var content = ""
+    var menu = localStorageService.get('menu')
+    // Duyệt mảng forEach/For in/For
+    if (menu) {
+        menu.forEach(function (dishes, index) {
+            // Symbol template string
+            content += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${dishes.name}</td>
+                    <td>${dishes.amount}</td>
+                    <td>${dishes.type}</td>
+                    <td><input type="checkbox"/></td>
+                </tr>
+            `
         })
         table.innerHTML = content
     }
