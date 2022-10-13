@@ -10,7 +10,7 @@ form.onsubmit = function (e) {
     console.log(name, description, "AdDDDDDDD");
     var data = { name, description }
     postDish(data).then(function (result) {
-        location.href = "http://127.0.0.1:5501/Assignment2/index.html"
+        location.href = "../index.html"
     })
 }
 
