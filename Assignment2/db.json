@@ -1,0 +1,42 @@
+{
+  "dishes": [
+    {
+      "name": "Pizza Gấp Đôi Nhân Phủ Cơn Lốc Hải Sản",
+      "description": "Pizza Cơn Lốc Hải Sản Với Hải Sản (MựC, Thanh Cua) Nhân Đôi Cùng Với Thơm, Ớt Chuông Xanh, HàNh Tây, Phủ Phô Mai Mozzarella Từ New Zealand Trên Nền XốT Cheesy Mayo.",
+      "categories": 1,
+      "id": 2
+    },
+    {
+      "name": "Pizza Gấp Đôi Nhân Phủ Hải Sản Xốt Pesto",
+      "description": "Pizza Hải Sản Xốt Pesto Với Hải Sản (Tôm, Mực) Nhân Đôi Cùng Với Nấm Trên Nền Xốt Pesto Đặc Trưng, Phủ Phô Mai Mozzarella Từ New Zealand Và Quế Tây.",
+      "categories": 1,
+      "id": 3
+    },
+    {
+      "name": "Phở bò",
+      "description": "Phở bò",
+      "id": 4
+    },
+    {
+      "name": "Bún chả",
+      "description": "Bún chảaaaaaaaaaaaa",
+      "id": 5
+    },
+    {
+      "name": "Bánh cuốn",
+      "description": "Bánh cuốnnnnnn",
+      "id": 6
+    },
+    {
+      "name": "Bánh cuốn NEW",
+      "description": "Bánh cuốnnnnnn",
+      "id": 7
+    },
+    {
+      "name": "Phở bò NEW",
+      "description": "Phở bò NEW",
+      "id": 8
+    }
+  ],
+  "categories": []
+}
