@@ -1,35 +1,28 @@
-// Fetch image
-function fetchImage(url, cb) {
-    fetch(url).then(function (response) {
-        console.log(response, "response");
-        // Callback
-        cb(response)
-    })
-}
-
-// fetchImage()
-
-// Render image
-function renderImage(seclector, value) {
-    document.querySelector(seclector).src = value
-}
-
-// Callback - Cách xử lý bất đồng bộ đầu tiên trong Js
-// Nested callback
-fetchImage("https://picsum.photos/1000/600", function (res) {
-    renderImage("#image1", res.url)
-    fetchImage("https://picsum.photos/400/300", function (res) {
-        renderImage("#image2", res.url)
-        fetchImage("https://picsum.photos/400/300", function (res) {
-            renderImage("#image3", res.url)
-            fetchImage("https://picsum.photos/400/300", function (res) {
-                renderImage("#image4", res.url)
-            })
-        })
-    })
+// Lấy dữ liệu
+fetch('http://localhost:3000/dishes').then(function(response) {
+    // Promise => khi mà trong then có return => sinh một promise mới
+    return response.json()
+}).then(function(result) {
+    console.log(result, "result");
 })
 
+// Tạo mới dữ liệu
 
+function postDish(data) {
+    fetch('http://localhost:3000/dishes', {
+        method: "POST", // Tạo mới
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+}
 
-// Khi ảnh 1 được load xong ảnh 2 mới đc load
-// Viết code tiếp ở bên dưới
+document.querySelector('#btn').onclick = function() {
+    var data = {
+        name: "Phở bò",
+        price: "40000",
+    } //FORM
+    postDish(data)
+    alert('Them moi thanh cong')
+}
