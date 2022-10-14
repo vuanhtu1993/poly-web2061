@@ -17,7 +17,7 @@ function render(data) {
             content += `
                 <tr>
                     <td>${index + 1}</td>
-                    <td>${item.name}</td>
+                    <td><a class="hover:text-red-400" href="./update/update.html?id=${item.id}">${item.name}</a></td>
                     <td>${item.description}</td>
                 </tr>
             `
