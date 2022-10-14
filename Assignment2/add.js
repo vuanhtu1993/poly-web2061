@@ -22,7 +22,6 @@ form.onsubmit = function (e) {
     var name = nameEl.value
     var price = priceEl.value
     var amount = amountEl.value
-    console.log(name, price, amount, "----------");
     var data = { name, price, amount }
     // Tạo mới món ăn
     createDish(data).then(function (result) {

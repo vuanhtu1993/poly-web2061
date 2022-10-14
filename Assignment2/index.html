@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
     <div>
         <img class="w-[200px]" src="./images/logo.png" alt="">
@@ -15,22 +17,29 @@
         <div class="w-[240px]">
             Menu
         </div>
-        <table class="w-full flex-1 border border-red-200">
-            <thead>
-                <td>STT</td>
-                <td>Tên món ăn</td>
-                <td>Thành tiền</td>
-                <td>Hình ảnh</td>
-                <td>Danh muc</td>
-                <td>Trạng thái</td>
-                <td>Chức năng</td>
-            </thead>
-            <tbody id="table">
+        <div class="flex-1">
+            <div class="text-right">
+                <a class="p-2 bg-red-500 text-white inline-block" href="./add.html">Thêm mới</a>
+            </div>
+            <table class="w-full border border-red-200">
+                <thead>
+                    <td>STT</td>
+                    <td>Tên món ăn</td>
+                    <td>Thành tiền</td>
+                    <td>Hình ảnh</td>
+                    <td>Danh muc</td>
+                    <td>Trạng thái</td>
+                    <td>Chức năng</td>
+                </thead>
+                <tbody id="table">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
     <script type="module" src="./app.js"></script>
 </body>
+
 </html>

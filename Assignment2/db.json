@@ -47,6 +47,12 @@
       "price": "40000",
       "amount": "12",
       "id": 7
+    },
+    {
+      "name": "mon an 1",
+      "price": "30000",
+      "amount": "12",
+      "id": 8
     }
   ],
   "categories": []
