@@ -1,9 +1,13 @@
-// Lấy dữ liệu
-fetch('http://localhost:3000/dishes').then(function(response) {
-    // Promise => khi mà trong then có return => sinh một promise mới
-    return response.json()
-}).then(function(result) {
-    console.log(result, "result");
+function getDishes() {
+    return fetch('http://localhost:3000/dishes')
+        .then(function (response) {
+            return response.json()
+        })
+}
+
+getDishes().then(function(result) {
+    console.log(result, "Du lieu mon an");
+    // --- Viet ham render o day ---
 })
 
 // Tạo mới dữ liệu
@@ -18,7 +22,7 @@ function postDish(data) {
     })
 }
 
-document.querySelector('#btn').onclick = function() {
+document.querySelector('#btn').onclick = function () {
     var data = {
         name: "Phở bò",
         price: "40000",
