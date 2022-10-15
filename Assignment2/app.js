@@ -19,7 +19,7 @@ function render(data) {
             content += `
                 <tr>
                     <td>${index + 1}</td>
-                    <td>${dish.name}</td>
+                    <td><a class="hover:text-blue-400" href="./update/update.html?id=${dish.id}">${dish.name}</a></td>
                     <td>${dish.description}</td>
                 </tr>
             `
