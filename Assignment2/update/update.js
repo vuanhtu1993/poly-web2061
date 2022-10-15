@@ -4,16 +4,14 @@ function getDishByID(id) {
     })
 }
 
-// IIFE
-// Intermediate invoke function expression
-
 function main() {
+    // Query string
     var queryString = location.search
     var param = new URLSearchParams(queryString)
     var id = param.get('id')
-    // console.log(id, "id-------");
+    console.log(id, "id-------");
     getDishByID(id).then(function (result) {
-        console.log(result);
+        console.log(result, "result");
     })
 }
 
