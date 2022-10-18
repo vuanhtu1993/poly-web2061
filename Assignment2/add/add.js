@@ -1,11 +1,13 @@
 // Declaration
-var form = document.querySelector('#form')
-var nameEl = document.querySelector('#name')
-var descriptionEl = document.querySelector('#description')
+var form = document.querySelector('#form')// DOM
+var nameEl = document.querySelector('#name') // DOM
+var descriptionEl = document.querySelector('#description')// DOM
 
+
+// Thêm mới
 function postDish(data) {
     return fetch('http://localhost:3000/dishes', {
-        method: "POST",
+        method: "POST", // phuong thuc tao moi RESTFull
         headers: {
             "Content-Type": "application/json"
         },
@@ -22,6 +24,7 @@ form.onsubmit = function(e) {
     console.log(name,description, "data" );
     var data = {name, description}
     postDish(data).then(function() {
+        // Callback
         location.href = "../index.html"
     })
 }
