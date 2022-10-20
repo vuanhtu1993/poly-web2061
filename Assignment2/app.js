@@ -1,5 +1,6 @@
-function getDishes() {
-    return fetch('http://localhost:3000/dishes').then(function (res) {
+// default parameter
+function getDishes(query = "") {
+    return fetch('http://localhost:3000/dishes?q='+ query).then(function (res) {
         return res.json()
     })
 }
@@ -27,22 +28,36 @@ function render(data) {
     document.querySelector('#table').innerHTML = content
 }
 
+// // Searching
+// // Bước 1: Lấy dữ liệu từ ô input 
+// var search_input = document.querySelector('#search-input')
+// var search_btn = document.querySelector('#search-btn')
+// search_btn.onclick = function() {
+//     console.log(search_input.value, "search_input");
+//     // Lọc - filter
+//     // Bước 2: Lọc dữ liệu từ mảng dữ liệu dishes
+//     var searched = dishes.filter(function(dish) {
+//         if(dish.name.includes(search_input.value)) {
+//             return true
+//         } else {
+//             return false
+//         }
+//     })
+//     // Bước 3: In ra màn hình (render)
+//     render(searched)
+// }
+
 // Searching
 // Bước 1: Lấy dữ liệu từ ô input 
 var search_input = document.querySelector('#search-input')
 var search_btn = document.querySelector('#search-btn')
+
 search_btn.onclick = function() {
-    console.log(search_input.value, "search_input");
-    // Lọc - filter
-    // Bước 2: Lọc dữ liệu từ mảng dữ liệu dishes
-    var searched = dishes.filter(function(dish) {
-        if(dish.name.includes(search_input.value)) {
-            return true
-        } else {
-            return false
-        }
+    var str = search_input.value
+    // Bước 2: Gọi dữ liệu từ server full text search
+    getDishes(str).then(function(result) {
+        // Bước 3: Render dữ liệu
+        render(result)
     })
-    // Bước 3: In ra màn hình (render)
-    render(searched)
 }
 
